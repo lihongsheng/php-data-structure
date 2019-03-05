@@ -7,6 +7,46 @@
  * 修改记录:
  *
  * $Id$
+ 0    1
+ 99   100
+ 300  400
+      3600
+3700
+r b  r  b   r   b     b        r
+0 1 99 100 300 400   3600     3700
+      
+ 海德接入商保（走商保流程，接受海德通知，下载海德数据并通知海德）预估两天（不包括海德医院导入，因商保代码不熟悉，如果出现问题可能会延时）
+ 后台同步数据优化 一天（应当初临时紧急加的，现在不好维护需要重写）
+ 后台理赔数据排查，后台搜索列表的医院展示修改，现在是全部加载，改成ajax加载（以防医院数据过多出现问题） 一天
+
+
+问题:
+    model 修改字段，及基于状态值获取数据，造成项目之间的不统一。
+    不同的项目读取配置问题（基于NGINX，基于yaf的，基于git分之的名）
+    model层的不统一
+    action乱写项目逻辑处理
+    工作压力问题（任务多，任务急）
+    项目管理问题（没有统一架构，谁都能动别的项目，项目交叉混乱）项目代码质量问题，只关注任务完成，不关注可维护行可拓展性，正确性
+        项目相关工具缺失
+    任务杂乱问题（测试工具，后台，海德接口）
+
+    项目规划问题 （商保测试工具的自动处理）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  */
 
 /**
@@ -301,7 +341,7 @@ class Tree {
 
 
                     if($node->value == $node->parent->left->value) {
-
+                        
                         //以父节点进行右旋
                         $current = $node->parent;
 
@@ -322,7 +362,7 @@ class Tree {
 
 
                     } else if($node->value == $node->parent->right->value) {//以祖父进行左旋 ,, 右右 -》左旋
-
+                        
                         $current = $node->parent->parent;
                         $current->color = 'r';
                         $node->parent->color = 'b';
@@ -353,7 +393,7 @@ class Tree {
                         }
                         $this->root->color = 'b';
                         $this->root->parent = null;
-
+                        
                         if($this->root->left->left->color == 'r') {
                             $node = $this->root->left->left;
                         }elseif($this->root->left->right->color == 'r') {

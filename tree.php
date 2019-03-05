@@ -168,10 +168,12 @@ class Tree {
                         $tmp->right = null;
                     }
                     if($fand==1) {
+                        
                         $current->parent->left  = $tmp;
                         $tmp->parent = $current->parent;
                     } else {
                         $current->parent->right = $tmp;
+                    
                         $tmp->parent = $current->parent;
                     }
                 }
@@ -262,8 +264,8 @@ $treeModel->delete(3);
 $treeModel->printTree($treeModel->root);
 $treeModel->print2Tree($treeModel->root,0);
 
+echo var_dump($treeModel->root);
 
 
-
-var_dump($treeModel->findBy(12,20,$treeModel->root));
-var_dump($treeModel->root);
+/*var_dump($treeModel->findBy(12,20,$treeModel->root));
+var_dump($treeModel->root);*/
