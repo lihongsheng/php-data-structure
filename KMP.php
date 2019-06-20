@@ -81,7 +81,7 @@ class char
             }
             $this->size = $this->size - $len;
             for ($i = $this->size - $len; $i <= $this->size - 1; $i++) {
-                unset($this->arr[$si]);
+                unset($this->arr[$i]);
             }
         }
     }
