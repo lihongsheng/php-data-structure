@@ -88,6 +88,7 @@ class heap
         for ($i = ($length - 2) / 2; $i >= 0; $i--) {
             $arr = $this->down($arr, $i, $length);
         }
+        var_dump($arr);
         //进行堆排序
         for ($i = $length - 1; $i >= 1; $i--) {
             //把堆顶的元素与最后一个元素交换
@@ -130,7 +131,63 @@ class heap
         $arr[$parent] = $temp;
         return $arr;
     }
+
+
+    function myHash($str) {
+        // hash(i) = hash(i-1) * 33 + str[i]
+        $hash = 5381;
+        $s    = md5($str); //相比其它版本，进行了md5加密
+        $seed = 5;
+        $len  = 32;//加密后长度32
+        for ($i = 0; $i < $len; $i++) {
+            // (hash << 5) + hash 相当于 hash * 33
+            //$hash = sprintf("%u", $hash * 33) + ord($s{$i});
+            //$hash = ($hash * 33 + ord($s{$i})) & 0x7FFFFFFF;
+            $hash = ($hash << $seed) + $hash + ord($s{$i});
+        }
+
+        return $hash & 0x7FFFFFFF;
+    }
+
+
+    /**
+     * @param $data
+     * @param $pId
+     * @return array
+     */
+    public function getTree($data, $pId)
+    {
+        $tree = array();
+        foreach($data as $k => $v)
+        {
+            if($v['parentid'] == $pId)
+            {        //父亲找到儿子
+                $v['parentid'] = $this->getTree($data, $v['id']);
+                $tree[] = $v;
+
+            }
+        }
+
+        return $tree;
+
+    }
+
+
 }
+
+$array =  array(
+    1 => array('id'=>'1','parentid'=>0,'name'=>'一级栏目一'),
+    2 => array('id'=>'2','parentid'=>0,'name'=>'一级栏目二'),
+    3 => array('id'=>'3','parentid'=>1,'name'=>'二级栏目一'),
+    4 => array('id'=>'4','parentid'=>0,'name'=>'一级栏目一'),
+    5 => array('id'=>'5','parentid'=>2,'name'=>'二级栏目二'),
+    6 => array('id'=>'6','parentid'=>5,'name'=>'三级栏目一'),
+    7 => array('id'=>'7','parentid'=>3,'name'=>'三级栏目一'),
+    8 => array('id'=>'8','parentid'=>7,'name'=>'四级栏目二'),
+    9 => array('id'=>'9','parentid'=>1,'name'=>'二级栏目一'),
+    10 => array('id'=>'10','parentid'=>7,'name'=>'一级栏目一'),
+    11 => array('id'=>'11','parentid'=>2,'name'=>'二级栏目二')
+);
 
 $testArr = [
     31,
@@ -154,5 +211,5 @@ $heap = new heap();
 
 //var_dump($heap->heapArr);
 
-var_dump($heap->sort($testArr));
+echo json_encode($heap->getTree($array,0));
 //var_dump($heap->heapArr);
