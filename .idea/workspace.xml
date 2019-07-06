@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7886bdaa-6dd6-4194-8118-1822ff68c419" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataStructure/RBTree.php" beforeDir="false" afterPath="$PROJECT_DIR$/dataStructure/RBTree.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,23 +33,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataStructure/AvlTree.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="223" column="21" lean-forward="true" selection-start-line="223" selection-start-column="21" selection-end-line="223" selection-end-column="21" />
+            <state relative-caret-position="143">
+              <caret line="151" column="3" lean-forward="true" selection-start-line="151" selection-start-column="3" selection-end-line="164" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dataStructure/RBTree.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1204">
+              <caret line="432" column="32" selection-start-line="432" selection-start-column="24" selection-end-line="432" selection-end-column="32" />
+              <folding>
+                <element signature="e#6#108#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataStructure/RBTree.php">
+        <entry file="file://$PROJECT_DIR$/dataStructure/RBAVL.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5190">
-              <caret line="56" column="3" selection-start-line="56" selection-start-column="3" selection-end-line="56" selection-end-column="3" />
-              <folding>
-                <element signature="e#6#108#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="463">
+              <caret line="69" column="7" selection-start-line="69" selection-start-column="7" selection-end-line="70" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -99,15 +108,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataStructure/Stack.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="46" column="21" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -127,10 +127,11 @@
         <option value="$PROJECT_DIR$/dataStructure/Table.php" />
         <option value="$PROJECT_DIR$/dataStructure/Stack.php" />
         <option value="$PROJECT_DIR$/tree.php" />
-        <option value="$PROJECT_DIR$/dataStructure/RBTree.php" />
         <option value="$PROJECT_DIR$/rbtree.php" />
         <option value="$PROJECT_DIR$/dataStructure/BinaryTree.php" />
         <option value="$PROJECT_DIR$/dataStructure/AvlTree.php" />
+        <option value="$PROJECT_DIR$/dataStructure/RBAVL.php" />
+        <option value="$PROJECT_DIR$/dataStructure/RBTree.php" />
       </list>
     </option>
   </component>
@@ -233,12 +234,12 @@
       <workItem from="1560416337678" duration="7401000" />
       <workItem from="1560702150224" duration="889000" />
       <workItem from="1560786491338" duration="26166000" />
-      <workItem from="1561817174525" duration="30589000" />
+      <workItem from="1561817174525" duration="33022000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66136000" />
+    <option name="totallyTimeSpent" value="68569000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -264,7 +265,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3292517" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.42312926" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.42312926" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
@@ -328,16 +329,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataStructure/RBTree.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5190">
-          <caret line="56" column="3" selection-start-line="56" selection-start-column="3" selection-end-line="56" selection-end-column="3" />
-          <folding>
-            <element signature="e#6#108#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataStructure/Table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-467">
@@ -382,8 +373,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dataStructure/AvlTree.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="223" column="21" lean-forward="true" selection-start-line="223" selection-start-column="21" selection-end-line="223" selection-end-column="21" />
+        <state relative-caret-position="143">
+          <caret line="151" column="3" lean-forward="true" selection-start-line="151" selection-start-column="3" selection-end-line="164" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataStructure/RBAVL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="69" column="7" selection-start-line="69" selection-start-column="7" selection-end-line="70" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataStructure/RBTree.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1204">
+          <caret line="432" column="32" selection-start-line="432" selection-start-column="24" selection-end-line="432" selection-end-column="32" />
+          <folding>
+            <element signature="e#6#108#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

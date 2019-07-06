@@ -52,7 +52,8 @@ class Node {
  *
 根据性质 5：红黑树从根节点到每个叶子节点的路径都包含相同数量的黑色节点，因此从根节点到叶子节点的路径中包含的黑色节点数被称为树的“黑色高度（black-height）”。
  *
-性质 4 则保证了从根节点到叶子节点的最长路径的长度不会超过任何其他路径的两倍。假如有一棵黑色高度为 3 的红黑树：从根节点到叶节点的最短路径长度是 2，该路径上全是黑色节点（黑节点 - 黑节点 - 黑节点）。
+性质 4 则保证了从根节点到叶子节点的最长路径的长度不会超过任何其他路径的两倍。假如有一棵黑色高度为 3 的红黑树：从根节点到叶节点的最短路径长度是 2，
+ * 该路径上全是黑色节点（黑节点 - 黑节点 - 黑节点）。
  * 最长路径也只可能为 4，在每个黑色节点之间插入一个红色节点（黑节点 - 红节点 - 黑节点 - 红节点 - 黑节点），
  * 性质 4 保证绝不可能插入更多的红色节点。由此可见，红黑树中最长路径就是一条红黑交替的路径。
  *
@@ -108,7 +109,6 @@ class Tree {
         $fand = null;
         while ($link!== null) {
             $parent = $link;
-
             if($value < $link->value) {
                 $fand = 1;
                 $link = $link->left;
@@ -178,9 +178,7 @@ class Tree {
 
         if(!empty($node->parent)) {
 
-
             while ($node->parent->color == 'r') {
-
                 /**
                  * 当前结点的父结点是红色且祖父结点的另一个子结点（叔叔结点）是红色。
                  * 当前结点的父节点一定存在，要不它已经不是一颗红黑树（只有黑色结点才会拥有红色结点）
@@ -471,6 +469,21 @@ class Tree {
     }
 
 
+    /**
+     * @param $node
+     * @param $space
+     */
+    public function printTree2($node, $space = '')
+    {
+        if ($node) {
+            echo $space . $node->value . "[" . $node->color . "]" . PHP_EOL;
+            $this->printTree2($node->left, $space . "   ");
+            $this->printTree2($node->right, $space . "   ");
+        }
+
+
+    }
+
 
 }
 
@@ -482,9 +495,10 @@ error_reporting(E_ERROR);
 $treeNode = [
     8,7,6,5,4,3,2,1
 ];
+$arr = [10,85,15,70,20,60,30,50,65,80,90,40,5,55];
 $treeModel = new Tree();
 
-foreach ($treeNode as $val) {
+foreach ($arr as $val) {
     $treeModel->insert($val);
 }
 
@@ -492,6 +506,6 @@ foreach ($treeNode as $val) {
 
 //echo $treeModel->find(8);
 //$treeModel->delete(3);
-$treeModel->printTree($treeModel->root);
+$treeModel->printTree2($treeModel->root);
 
 
