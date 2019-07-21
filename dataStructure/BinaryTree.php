@@ -32,7 +32,7 @@ class BinaryTree
     /**
      * @var Node
      */
-    private $node;
+    public $node;
 
     public function __construct()
     {
@@ -47,13 +47,12 @@ class BinaryTree
             $this->node = new Node($value);
         } else {
             $parent = $link = $this->node;
-            while ($link) {
+            while ($link != null) {
                 //找到插入点的上层节点
                 $parent = $link;
                 if ($link->value > $value) {
                     $link = $link->left;
-                }
-                if ($link->value < $value) {
+                } else {//if ($link->value < $value)
                     $link = $link->right;
                 }
             }
@@ -63,7 +62,7 @@ class BinaryTree
 
             if ($parent->value > $value) {
                 $parent->left = new Node($value);
-            } else if($parent->value < $value) {
+            } else {//else if($parent->value  $value)
                 $parent->right = new Node($value);
             }
 
@@ -193,7 +192,8 @@ class BinaryTree
     /**
      * 先序遍历
      *    先访问根节点，在访问左子树，在访问右子树
-     * 中序是先访问左子树, 再根结点，再右子树, 后序是先访问左子树, 再右子树，再根结点
+     *   中序是先访问左子树, 再根结点，再右子树,
+     *   后序是先访问左子树, 再右子树，再根结点
      */
     function printTreeOne(Node $node, $space = "")
     {
@@ -205,7 +205,7 @@ class BinaryTree
     }
 
     /**
-     * 层次遍历
+     * 层次遍历：可以顺序访问节点
      *    依据与队列或是栈来存储要遍历的节点
      *    可以达到顺序取数据的目的
      */
@@ -213,8 +213,8 @@ class BinaryTree
     {
         $tmp[] = $node;
         while (!empty($tmp)) {
-           $node = array_unshift($tmp);
-           echo $node;
+           $node = array_shift($tmp);
+           echo $node->value.PHP_EOL;
             if ($node->left) {
                 array_push($tmp, $node->left);
             }
@@ -225,3 +225,24 @@ class BinaryTree
     }
 
 }
+
+$testArr = [
+    31,
+    21,
+    19,
+    68,
+    26,
+    65,
+    19,
+    14,
+    13,
+    16,
+    32
+];
+
+$obj = new BinaryTree();
+foreach ($testArr as $a) {
+    $obj->insert($a);
+}
+
+$obj->printTree2($obj->node);

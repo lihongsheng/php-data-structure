@@ -10,6 +10,12 @@
 
 class BubbleSort
 {
+
+
+    public function __construct()
+    {
+    }
+
     /**
      * @param array $arr
      * @return array
