@@ -27,6 +27,10 @@ class Node {
 
 }
 
+/**
+ * 二叉树
+ * Class BinaryTree
+ */
 class BinaryTree
 {
     /**
