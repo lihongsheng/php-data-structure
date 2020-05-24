@@ -44,13 +44,17 @@ class Snowflake
      */
     protected $sequence = 1;
 
-
+    //标志位需要位移的长度
     protected $signLeftShift = self::TIMESTAMP_BITS + self::DATA_CENTER_BITS + self::MACHINE_ID_BITS + self::SEQUENCE_BITS;
+    //时间差值需要位移的长度
     protected $timestampLeftShift = self::DATA_CENTER_BITS + self::MACHINE_ID_BITS + self::SEQUENCE_BITS;
+    //数据中心需要位移的长度
     protected $dataCenterLeftShift = self::MACHINE_ID_BITS + self::SEQUENCE_BITS;
+    //机器需要位移的长度
     protected $machineLeftShift = self::SEQUENCE_BITS;
     //最大自增数
     //下边语法执行效果 等于 (1 << 12) - 1;
+    //-1 << self::SEQUENCE_BITS = 1111111111111111111111111111111111111111111111111111000000000000
     protected $maxSequenceId   = ~ (-1 << self::SEQUENCE_BITS);
     //最大机器数
     protected $maxMachineId    = ~ (-1 << self::MACHINE_ID_BITS);
