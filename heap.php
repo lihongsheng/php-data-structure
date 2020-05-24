@@ -52,11 +52,11 @@ class heap
      */
     public function delete()
     {
-        $i       = (count($this->heapArr) - 1);
+        $i       = $this->heapSize;
         $minVal  = $this->heapArr[0];
         $lastVal = $this->heapArr[$i];
         $j       = 0;
-        while (2 * $j <= $i) {
+        while (2 * $j < $i) {
             $left  = 2 * $j + 1;
             $right = 2 * $j + 2;
             $t     = $left;
