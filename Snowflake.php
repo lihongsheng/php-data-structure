@@ -20,10 +20,6 @@ class Snowflake
     const SEQUENCE_BITS = 12;
 
     /**
-     * @var IdWorker
-     */
-    private static $idWorker;
-    /**
      * @var mixed
      */
     protected $dataCenterId;
@@ -111,16 +107,14 @@ class Snowflake
     }
 
     /**
-     * Notes:parse
-     * @author  zhangrongwang
-     * @date 2018-12-25 16:41:27
-     * @param $uuid
+     * 解析自增ID
+     * @param $id
      * @return array
      */
-    public function parse($uuid)
+    public function parse($id)
     {
         //转化为二进制字符串
-        $binUuid = decbin($uuid);
+        $binUuid = decbin($id);
         $len = strlen($binUuid);
         $sequenceStart = $len - self::SEQUENCE_BITS;
         //截取自增的二进制字符串
@@ -144,11 +138,6 @@ class Snowflake
         ];
     }
 
-    /**
-     * Notes:getUnixTimestamp
-     * @author  zhangrongwang
-     * @date 2018-12-25 11:42:06
-     */
     private function getUnixTimestamp()
     {
         return floor(microtime(true) * 1000);
