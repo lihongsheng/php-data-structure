@@ -53,7 +53,7 @@ class IndexNode extends Node
      */
     public $downNode = null;
 
-    public $level = 0;
+   // public $level = 0;
 
 
 }
@@ -155,6 +155,7 @@ class SkipList
     }
 
     /**
+     * 获取值
      * @param $score
      * @return Node|null
      */
@@ -163,7 +164,7 @@ class SkipList
         $node = $this->findEntry($score);
 
         if ($node->nextNode && $node->nextNode->score == $score) {
-            return $node;
+            return $node->nextNode;
         }
         return null;
     }
@@ -234,6 +235,9 @@ class SkipList
     }
 
 
+    /**
+     * 打印跳跃表
+     */
     public function prinSkipList()
     {
         $down = $node = $this->head;
@@ -248,10 +252,42 @@ class SkipList
         }
     }
 
+    /**
+     * @param $score
+     * @return bool
+     */
+    public function del($score)
+    {
+        $node = $this->get($score);
+        if (empty($node)) {
+            return true;
+        }
+
+        $head = $down = $this->head;
+        for ($i = $this->level;$i>=1;$i--) {
+            $nodeNum = 1;
+            $levelNode = $down;
+            while ($down->nextNode && $down->nextNode->score < $score) {
+                $nodeNum++;
+                $down = $down->nextNode;
+            }
+            if ($down->nextNode && $down->nextNode->score == $score) {
+                $down->nextNode = $down->nextNode->nextNode;
+                if ($nodeNum <= 2 && !$down->nextNode) {
+                    $head = $head->downNode ? $head->downNode : $head;
+                }
+            }
+            $down = $levelNode->downNode ? $levelNode->downNode : $levelNode;
+        }
+        $this->head = $head;
+    }
+
 }
 
+/**
+ * Test 1
+ */
 $skipList = new SkipList();
-//
 $skipList->addNode(5,'5');
 $skipList->addNode(8,'8');
 $skipList->addNode(6,'6');
@@ -260,56 +296,60 @@ $skipList->addNode(3,'3');
 $skipList->addNode(2,'2');
 $skipList->addNode(1,'1');
 $skipList->addNode(0,'0');
-//
-//$skipList->prinSkipList();
-//
-//$node = $skipList->findEntry2(7);
-
-
-//
-//$head2 = new IndexNode(null);
-//$head1 = new IndexNode(null);
-//
-//$head2->downNode = $head1;
-//
-//
-//
-//$data1 = new Node(1);
-//$data1->setData('1');
-//$index1 = new IndexNode(1);
-//$index1->downNode = $data1;
-//
-//$index2 = new IndexNode(2);
-//$data2 = new Node(2);
-//$data2->setData('2');
-//
-//$index2->downNode = $data2;
-//$index1->nextNode = $index2;
-//
-//$data1->nextNode = $data2;
-//
-//
-//$data3 = new Node(3);
-//$data3->setData('3');
-//$data2->nextNode = $data3;
-//
-//$data4 = new Node(4);
-//$data4->setData('4');
-//$data3->nextNode = $data4;
-//
-//
-//$head1->nextNode = $data1;
-//$head2->nextNode = $index1;
-//
-//$head3 = new IndexNode(null);
-//$head3->downNode = $head2;
-//$head3->nextNode = new IndexNode(1);
-//$head3->nextNode->downNode = $index1;
-//
-//$skipList->head  = $head3;
-//$skipList->level = 3;
 $skipList->prinSkipList();
 
 
-$node = $skipList->findEntry2(7);
-var_dump($node->nextNode->score);
+echo "-------------------------".PHP_EOL;
+
+/**
+ * Test 2
+ */
+$skipList = new SkipList();
+$head2 = new IndexNode(null);
+$head1 = new IndexNode(null);
+
+$head2->downNode = $head1;
+
+
+
+$data1 = new Node(1);
+$data1->setData('1');
+$index1 = new IndexNode(1);
+$index1->downNode = $data1;
+
+$index2 = new IndexNode(2);
+$data2 = new Node(2);
+$data2->setData('2');
+
+$index2->downNode = $data2;
+$index1->nextNode = $index2;
+
+$data1->nextNode = $data2;
+
+
+$data3 = new Node(3);
+$data3->setData('3');
+$data2->nextNode = $data3;
+
+$data4 = new Node(4);
+$data4->setData('4');
+$data3->nextNode = $data4;
+
+
+$head1->nextNode = $data1;
+$head2->nextNode = $index1;
+
+$head3 = new IndexNode(null);
+$head3->downNode = $head2;
+$head3->nextNode = new IndexNode(1);
+$head3->nextNode->downNode = $index1;
+
+$skipList->head  = $head3;
+$skipList->level = 3;
+$skipList->prinSkipList();
+$skipList->del(1);
+echo "-------------------------".PHP_EOL;
+$skipList->prinSkipList();
+//$node = $skipList->get(7);
+//var_dump($node->score);
+
