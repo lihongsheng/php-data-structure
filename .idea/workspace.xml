@@ -16,8 +16,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dataStructure/SkipList.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="267" column="29" selection-start-line="267" selection-start-column="29" selection-end-line="267" selection-end-column="29" />
+            <state relative-caret-position="-4818">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+              <folding>
+                <element signature="e#6#825#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -256,12 +259,12 @@
       <workItem from="1591116756321" duration="3924000" />
       <workItem from="1591156374400" duration="103000" />
       <workItem from="1591204615861" duration="14301000" />
-      <workItem from="1591341484966" duration="4802000" />
+      <workItem from="1591341484966" duration="6068000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133716000" />
+    <option name="totallyTimeSpent" value="134982000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -418,8 +421,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dataStructure/SkipList.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="267" column="29" selection-start-line="267" selection-start-column="29" selection-end-line="267" selection-end-column="29" />
+        <state relative-caret-position="-4818">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#6#825#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

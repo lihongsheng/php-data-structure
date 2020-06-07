@@ -53,6 +53,9 @@ class IndexNode extends Node
      */
     public $downNode = null;
 
+    /**
+     * @var int 当前的层数
+     */
    // public $level = 0;
 
 
@@ -61,25 +64,27 @@ class IndexNode extends Node
 
 class SkipList
 {
-    public $level = 1;//层级
-
-    public $levelIndexArr = [];
+    /**
+     * 跳跃表层高
+     * @var int
+     */
+    public $level = 1;
 
     /**
+     * 最高层头结点
      * @var IndexNode
      */
     public $head = null;
 
-    /**
-     * @var IndexNode
-     */
-    public $tail = null;
-
-    public $nodeSize;
-
     CONST SKIPLIST_P = 0.5;
+    /**
+     * 最大层数
+     */
     const MAX_LEVEL  = 16;
 
+    /**
+     * SkipList constructor.
+     */
     public function __construct()
     {
         $this->head = new IndexNode(null);
@@ -87,12 +92,13 @@ class SkipList
 
     /**
      *
-    理论来讲，一级索引中元素个数应该占原始数据的 50%，二级索引中元素个数占 25%，三级索引12.5% ，一直到最顶层。
-    因为这里每一层的晋升概率是 50%。对于每一个新插入的节点，都需要调用 randomLevel 生成一个合理的层数。
-    该 randomLevel 方法会随机生成 1~MAX_LEVEL 之间的数，且 ：
-    50%的概率返回 1
-    25%的概率返回 2
-    12.5%的概率返回 3 ...
+     *理论来讲，一级索引中元素个数应该占原始数据的 50%，二级索引中元素个数占 25%，三级索引12.5% ，一直到最顶层。
+     * 因为这里每一层的晋升概率是 50%。对于每一个新插入的节点，都需要调用 randomLevel 生成一个合理的层数。
+     *该 randomLevel 方法会随机生成 1~MAX_LEVEL 之间的数，且 ：
+     *50%的概率返回 1
+     *25%的概率返回 2
+     *12.5%的概率返回 3 ...
+     *
      */
     public function randomLevel()
     {
@@ -274,6 +280,7 @@ class SkipList
             if ($down->nextNode && $down->nextNode->score == $score) {
                 $down->nextNode = $down->nextNode->nextNode;
                 if ($nodeNum <= 2 && !$down->nextNode) {
+                    $this->level = $this->level > 1 ? ($this->level - 1) : $this->level;
                     $head = $head->downNode ? $head->downNode : $head;
                 }
             }
@@ -349,6 +356,9 @@ $skipList->level = 3;
 $skipList->prinSkipList();
 $skipList->del(1);
 echo "-------------------------".PHP_EOL;
+$skipList->prinSkipList();
+echo "-------------------------".PHP_EOL;
+$skipList->addNode(6,'6');
 $skipList->prinSkipList();
 //$node = $skipList->get(7);
 //var_dump($node->score);
