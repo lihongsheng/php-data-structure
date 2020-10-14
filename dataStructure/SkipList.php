@@ -304,8 +304,6 @@ $skipList->addNode(2,'2');
 $skipList->addNode(1,'1');
 $skipList->addNode(0,'0');
 $skipList->prinSkipList();
-
-
 echo "-------------------------".PHP_EOL;
 
 /**
